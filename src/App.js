@@ -1,8 +1,22 @@
-import React from 'react'
+import { hot } from 'react-hot-loader/root'
+import React, { useState } from 'react'
 
 const App = () => {
-    const title = 'Reddst asdg B  agasdgaagd'
-    return <div>{title}</div>
+    const title = 'Reddst asdg B fasddsdfgf '
+    const [count, setCount] = useState(1)
+    return (
+        <div>
+            <div>{title}</div>
+            <div>{count}</div>
+            <button
+                onClick={() => {
+                    setCount(count + 1)
+                }}
+            >
+                count
+            </button>
+        </div>
+    )
 }
 
-export default App
+export default hot(App)

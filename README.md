@@ -23,6 +23,8 @@
 
 - [devServer](https://webpack.js.org/configuration/dev-server/)
 - [babel-loader](https://babeljs.io/docs/en/babel-preset-react)
-  
+- [hot-reload](https://medium.com/frochu/react-%E6%95%B4%E5%90%88-hot-module-replacement-cc4721a432af)
+  - [react-hot-loader](https://github.com/gaearon/react-hot-loader)
+
 ### .gitignore
 > basic seeting by [.gitignore Generator](https://marketplace.visualstudio.com/items?itemName=piotrpalarz.vscode-gitignore-generator)
