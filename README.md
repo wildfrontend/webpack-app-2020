@@ -80,3 +80,44 @@
 
 ## Reat Pattern
 > refer : https://reactpatterns.com/
+
+## Git Commit Format
+> refer : https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.em2hiij8p46d
+
+commit : 
+format : 
+```sh
+<type> (scope): title
+- do something
+- do another 
+````
+Allowed type : * required
+
+```md
+This describes the kind of change that this commit is providing.
+
+- feat (feature)
+- fix (bug fix)
+- docs (documentation)
+- style (formatting, missing semi colons, …)
+- refactor
+- test (when adding missing tests)
+- chore (maintain)
+```
+
+Allowed scope : 
+
+```
+Scope can be anything specifying place of the commit change. For example $location, $browser, $compile, $rootScope, ngHref, ngClick, ngView, etc...
+```
+
+Allowed title : * required
+
+```md
+This is a very short description of the change.
+- use imperative, present tense: “change” not “changed” nor “changes”
+- don't capitalize first letter
+- no dot (.) at the end
+```
+
+
