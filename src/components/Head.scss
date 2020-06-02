@@ -1,3 +1,12 @@
 ul {
     display: flex;
+    li {
+        padding: 20px;
+    }
+}
+
+body {
+    background: green;
+    width: 100vw;
+    height: 300px;
 }

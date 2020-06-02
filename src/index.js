@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
 
 const Root = () => {
+    console.log('start')
     return (
         <Router>
             <App></App>
