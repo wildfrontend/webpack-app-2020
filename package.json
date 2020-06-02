@@ -1,21 +1,14 @@
 {
     "name": "react-pattern",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
     "scripts": {
         "start": "webpack-dev-server --open",
         "build": "webpack",
         "watch": "webpack --watch",
         "prettier": "prettier --config .prettierrc --write **.js"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
     "dependencies": {
         "@hot-loader/react-dom": "^16.13.0",
         "react": "^16.13.1",
-        "react-dom": "^16.13.1",
         "react-hot-loader": "^4.12.21"
     },
     "devDependencies": {

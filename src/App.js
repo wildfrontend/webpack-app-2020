@@ -2,7 +2,7 @@ import { hot } from 'react-hot-loader/root'
 import React, { useState } from 'react'
 
 const App = () => {
-    const title = 'Reddst asdg B fasddsdfgf '
+    const title = 'Reddst asdg B asdg;sdsopsdgas '
     const [count, setCount] = useState(1)
     return (
         <div>
