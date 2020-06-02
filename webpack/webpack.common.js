@@ -1,15 +1,23 @@
 const path = require('path')
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const ENV = process.env.NODE_ENV
+
 module.exports = {
-    entry: [
-        'react-hot-loader/patch',
-        path.resolve(__dirname, '../src/index.js'),
-    ],
+    entry: {
+        app: path.resolve(__dirname, '../src/index.js'),
+        hmr: 'react-hot-loader/patch',
+        vendor: ['react', 'react-router-dom', '@hot-loader/react-dom'],
+    },
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: 'bundle.js',
+        publicPath: '',
+        filename:
+            ENV === 'production'
+                ? 'js/[name].[chunkhash].js'
+                : 'js/[name].[hash].js',
     },
     module: {
         rules: [
@@ -27,6 +35,7 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
+                            publicPath: './css',
                             esModule: true,
                             hmr: process.env.NODE_ENV === 'development',
                         },
@@ -40,6 +49,9 @@ module.exports = {
                 use: [
                     {
                         loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                        },
                     },
                 ],
             },
@@ -55,8 +67,8 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: '[id].css',
+            filename: 'css/[name].css',
+            chunkFilename: 'css/[id].css',
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',

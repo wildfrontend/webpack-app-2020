@@ -7,6 +7,10 @@ module.exports = merge(common, {
     mode: 'production',
     optimization: {
         minimizer: [new OptimizeCssAssetsWebpackPlugin()],
+        splitChunks: {
+            chunks: 'all',
+            minChunks: Infinity,
+        },
     },
     plugins: [new OptimizeCssAssetsWebpackPlugin()],
 })
