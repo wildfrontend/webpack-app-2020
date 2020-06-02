@@ -120,4 +120,19 @@ This is a very short description of the change.
 - no dot (.) at the end
 ```
 
+### ISSUE
 
+1. `react-router-dom` refresh page not GET route
+
+[solved](https://stackoverflow.com/questions/51566221/page-doesnt-load-on-refresh-react-router-dom) : 
+
+webpack.config.js
+
+````
+devServer:{
+  ...
+    historyApiFallback: {
+    index: 'index.html' // assuming this is your entry point file that loads your bundle.
+  }
+}
+````

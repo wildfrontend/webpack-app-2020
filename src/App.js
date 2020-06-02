@@ -1,20 +1,12 @@
+import React from 'react'
+import Head from 'components/Head'
+import Routes from 'routes'
 import { hot } from 'react-hot-loader/root'
-import React, { useState } from 'react'
-
 const App = () => {
-    const title = 'Reddst asdg B asdg;sdsopsdgas '
-    const [count, setCount] = useState(1)
     return (
         <div>
-            <div>{title}</div>
-            <div>{count}</div>
-            <button
-                onClick={() => {
-                    setCount(count + 1)
-                }}
-            >
-                count
-            </button>
+            <Head />
+            <Routes />
         </div>
     )
 }
