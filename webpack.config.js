@@ -1,4 +1,6 @@
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
@@ -18,12 +20,25 @@ module.exports = {
                 use: ['babel-loader'],
             },
             {
-                test: /\.(scss|css|sass)$/i,
-                use: ['css-loader', 'sass-loader', 'style-loader'],
+                test: /\.(scss|css)$/i,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg|png)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                    },
+                ],
             },
         ],
     },
-    plugins: [],
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        }),
+    ],
     resolve: {
         alias: {
             'react-dom': '@hot-loader/react-dom',
