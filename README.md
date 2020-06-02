@@ -1,9 +1,11 @@
 # React Project Pattern
-
+- [Config Files](#config-files)
+- [React Pattern](#react-pattern)
+- [Git Commit Format](#git-commit-format)
 ## Config Files
 
 ### .babelrc
-- react env basic
+basic react env 
   
 ```json
 {
@@ -12,12 +14,33 @@
     ]
 }
 ```
-
+relative path 
+```json
+{
+  "plugins":
+   [
+      [
+          "module-resolver",
+          {
+              "root": ["."],
+              "alias": {
+                  "routes": "./src/routes",
+                  "pages": "./src/pages",
+                  "components": "./src/components",
+                  "assets":"./src/assets"
+              }
+          }
+      ]
+    ]
+}
+```
 ### .prettierrc
 > basic setting by [Prettier](https://prettier.io/docs/en/configuration.html#basic-configuration) 
 
 ### .gitignore
 > basic seeting by [.gitignore Generator](https://marketplace.visualstudio.com/items?itemName=piotrpalarz.vscode-gitignore-generator)
+
+- remove ignore about Nuxt.js
 
 ### jsconfig.json
 > more jsconfig tutorial refer [this](https://zhuanlan.zhihu.com/p/55644953)
@@ -25,60 +48,73 @@
 - relative path 
 ````json
 {
-  "components": "./src/components/*", 
+  "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+          "components/*": ["./src/components/*"],
+          "routes/*": ["./src/routes/*"],
+          "pages/*": ["./src/pages/*"],
+          "assets/*": ["./src/assets"]
+      }
+  },
 }
 ````
 
 - exclude files
-
+```json
+{
+  "exclude": ["node_modules"]
+}
+```
 ### package.json
 
-- script 
+#### script 
   - `yarn prettier` : format all js files in Project
   - `yarn start` : start dev server
   - `yarn build` : bundle static file
 #### dependency
-##### main
-
+  
+main packages：
 ````json
-  "@hot-loader/react-dom": "^16.13.0", // indeed react-dom
+  // indeed react-dom
+  "@hot-loader/react-dom": "^16.13.0", 
   "react": "^16.13.1",
   "react-hot-loader": "^4.12.21"
 ````
 
-##### babel
+babel：
 ````json
+  // core
   "@babel/core": "^7.10.2",
   "@babel/preset-env": "^7.10.2",
   "@babel/preset-react": "^7.10.1",
+   // relative path complier
+  "babel-plugin-module-resolver": "^4.0.0",
 ````
-##### loader 
+loader： 
 ````json
   "babel-loader": "^8.1.0",
+  // replace style-loader
+  "mini-css-extract-plugin": "^0.9.0",
   "css-loader": "^3.5.3",
   "node-sass": "^4.14.1",
   "sass-loader": "^8.0.2",
+  // font / image
+  "file-loader": "^6.0.0",
+  // html
+  "html-loader": "^1.1.0",
+  // reac-hot-loader
+  "react-hot-loader/webpack": "^4.12.21",
 ````
-##### devtool
+devtool：
 ````json
   "webpack": "^4.43.0",
   "webpack-cli": "^3.3.11",
-  "webpack-dev-server": "^3.11.0"
+  "webpack-dev-server": "^3.11.0",
+  "webpack-merge": "^4.2.2"
 ````
 
-### webpack.config
-- loader 
-  - babel-loader
-  - style-loader
-  - sass-loader
-  - css-loader
-  
-- [devServer](https://webpack.js.org/configuration/dev-server/)
-- [babel-loader](https://babeljs.io/docs/en/babel-preset-react)
-- [hot-reload](https://medium.com/frochu/react-%E6%95%B4%E5%90%88-hot-module-replacement-cc4721a432af)
-  - [react-hot-loader](https://github.com/gaearon/react-hot-loader)
-
-## Reat Pattern
+## React Pattern
 > refer : https://reactpatterns.com/
 
 ## Git Commit Format
@@ -119,20 +155,3 @@ This is a very short description of the change.
 - don't capitalize first letter
 - no dot (.) at the end
 ```
-
-### ISSUE
-
-1. `react-router-dom` refresh page not GET route
-
-[solved](https://stackoverflow.com/questions/51566221/page-doesnt-load-on-refresh-react-router-dom) : 
-
-webpack.config.js
-
-````
-devServer:{
-  ...
-    historyApiFallback: {
-    index: 'index.html' // assuming this is your entry point file that loads your bundle.
-  }
-}
-````
