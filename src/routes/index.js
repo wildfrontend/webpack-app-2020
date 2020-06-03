@@ -13,6 +13,8 @@ const Routes = () => {
             <Route path="/about">
                 <About />
             </Route>
+            <Route path="/auth">
+            </Route>
         </Switch>
     )
 }

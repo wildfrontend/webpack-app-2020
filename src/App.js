@@ -1,5 +1,5 @@
 import React from 'react'
-import Head from 'components/Head'
+import Head from 'components/Head/Head'
 import Routes from 'routes'
 import { hot } from 'react-hot-loader/root'
 const App = () => {
