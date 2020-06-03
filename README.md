@@ -1,7 +1,16 @@
 # React Project Pattern
-- [Config Files](#config-files)
-- [React Pattern](#react-pattern)
-- [Git Commit Format](#git-commit-format)
+- [React Project Pattern](#react-project-pattern)
+  - [Config Files](#config-files)
+    - [.babelrc](#babelrc)
+    - [.prettierrc](#prettierrc)
+    - [.gitignore](#gitignore)
+    - [jsconfig.json](#jsconfigjson)
+    - [package.json](#packagejson)
+      - [script](#script)
+      - [dependency](#dependency)
+  - [React Pattern](#react-pattern)
+  - [Git Commit Format](#git-commit-format)
+
 ## Config Files
 
 ### .babelrc
@@ -127,25 +136,32 @@ format :
 - do something
 - do another 
 ````
+
 Allowed type : * required
 
-```md
-This describes the kind of change that this commit is providing.
+| type     | comment                             |     |
+| -------- | ----------------------------------- | --- |
+| feat     | feature                             |     |
+| fix      | bug fix                             |     |
+| docs     | document                            |     |
+| style    | formatting, missing semi colons,... |     |
+| refactor | refactor                            |     |
+| test     | when adding missing tests           |     |
+| chore    | maintain                            |     |
 
-- feat (feature)
-- fix (bug fix)
-- docs (documentation)
-- style (formatting, missing semi colons, …)
-- refactor
-- test (when adding missing tests)
-- chore (maintain)
+
+
+Allowed scope : not requried
+
+```
+Scope can be anything specifying place of the commit change. 
 ```
 
-Allowed scope : 
+| scope | comment                            |
+| ----- | ---------------------------------- |
+| Home  | about Home router,pages,components |
 
-```
-Scope can be anything specifying place of the commit change. For example $location, $browser, $compile, $rootScope, ngHref, ngClick, ngView, etc...
-```
+
 
 Allowed title : * required
 
