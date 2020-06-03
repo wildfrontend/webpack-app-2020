@@ -2,7 +2,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const ENV = process.env.NODE_ENV
+const ENV_PROD = process.env.NODE_ENV === 'production'
 
 module.exports = {
     entry: {
@@ -13,10 +13,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '',
-        filename:
-            ENV === 'production'
-                ? 'js/[name].[chunkhash].js'
-                : 'js/[name].[hash].js',
+        filename: ENV_PROD ? 'js/[name].[chunkhash].js' : 'js/[name].[hash].js',
     },
     module: {
         rules: [

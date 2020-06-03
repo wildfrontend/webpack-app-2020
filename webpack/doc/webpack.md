@@ -1,11 +1,18 @@
-### webpack.config
+# webpack.config
 
-- loader 
-  - babel-loader
-  - style-loader
-  - sass-loader
-  - css-loader
-  
+- [webpack.config](#webpackconfig)
+  - [loader](#loader)
+  - [devServer](#devserver)
+  - [Issues](#issues)
+
+## loader 
+
+- babel-loader
+- style-loader
+- sass-loader
+- css-loader
+
+## devServer
 - [devServer](https://webpack.js.org/configuration/dev-server/)
 - [babel-loader](https://babeljs.io/docs/en/babel-preset-react)
 - [hot-reload](https://medium.com/frochu/react-%E6%95%B4%E5%90%88-hot-module-replacement-cc4721a432af)
@@ -13,7 +20,7 @@
 
 
 
-### ISSUE
+## Issues
 
 1. `react-router-dom` refresh page not GET route
 
@@ -21,7 +28,7 @@
 
 webpack.config.js
 
-````
+````js
 devServer:{
   ...
     historyApiFallback: {
