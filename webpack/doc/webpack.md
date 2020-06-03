@@ -11,7 +11,7 @@
 - style-loader
 - sass-loader
 - css-loader
-
+ - [file-loader](https://webpack.js.org/loaders/file-loader/)
 ## devServer
 - [devServer](https://webpack.js.org/configuration/dev-server/)
 - [babel-loader](https://babeljs.io/docs/en/babel-preset-react)
@@ -36,3 +36,6 @@ devServer:{
   }
 }
 ````
+
+2. file-loader splite font and file 
+   > https://stackoverflow.com/questions/33058964/configure-webpack-to-output-images-fonts-in-a-separate-subfolders
