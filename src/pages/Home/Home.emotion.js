@@ -17,3 +17,8 @@ export const Font = styled.div`
     font-family: 'test_font';
     font-size: 20px;
 `
+
+
+export const Test1 = styled.div`
+    
+`
