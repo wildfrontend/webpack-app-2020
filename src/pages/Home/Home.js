@@ -2,6 +2,9 @@ import React from 'react'
 import * as S from './Home.emotion'
 
 const Home = () => {
+    console.log('test')
+    console.error('test')
+
     return (
         <div>
             Home Page
