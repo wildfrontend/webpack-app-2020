@@ -1,9 +1,10 @@
 const initialState = {
     isAuthenticated: false,
 }
-const AUTH_TOEKN = 'AUTH_TOEKN'
-const AUTH_LOGIN = 'AUTH_LOGIN'
-const AUTH_LOGOUT = 'AUTH_LOGOUT'
+
+export const AUTH_TOEKN = 'AUTH_TOEKN'
+export const AUTH_LOGIN = 'AUTH_LOGIN'
+export const AUTH_LOGOUT = 'AUTH_LOGOUT'
 
 export const loginAuth = () => {
     return {
@@ -20,24 +21,19 @@ export const logoutAuth = () => {
 export default function reducers(state = initialState, action) {
     switch (action.type) {
         case AUTH_LOGIN:
-            localStorage.setItem(
-                AUTH_TOEKN,
-                JSON.stringify({
-                    ...state,
-                    isAuthenticated: true,
-                })
-            )
-
-            return {
+            const state_login = {
                 ...state,
                 isAuthenticated: true,
             }
+            localStorage.setItem(AUTH_TOEKN, JSON.stringify(state_login))
+            return state_login
         case AUTH_LOGOUT:
-            localStorage.removeItem(AUTH_TOEKN)
-            return {
+            const state_logout = {
                 ...state,
                 isAuthenticated: false,
             }
+            localStorage.removeItem(AUTH_TOEKN)
+            return state_logout
         default:
             return state
     }
