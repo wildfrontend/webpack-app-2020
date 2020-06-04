@@ -1,11 +1,22 @@
 import React from 'react'
-import Head from 'components/Head/Head'
-import Routes from 'routes'
 import { hot } from 'react-hot-loader/root'
+import Routes from 'routes'
+import { Link } from 'react-router-dom'
+
 const App = () => {
     return (
         <div>
-            <Head />
+            <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/about">about</Link>
+                </li>
+                <li>
+                    <Link to="/topics">Topics</Link>
+                </li>
+            </ul>
             <Routes />
         </div>
     )

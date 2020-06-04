@@ -1,8 +1,11 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
+import Home from 'pages/Home'
 import About from 'pages/About'
-import Home from 'pages/Home/Home'
+
+import RoutesTopics from './topics'
+import NotFound404 from 'pages/ErrorPage/404'
 
 const Routes = () => {
     return (
@@ -13,7 +16,8 @@ const Routes = () => {
             <Route path="/about">
                 <About />
             </Route>
-            <Route path="/auth">
+            <Route path="/topics">
+                <RoutesTopics />
             </Route>
         </Switch>
     )
