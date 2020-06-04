@@ -1,12 +1,10 @@
 import React from 'react'
 import SignFrom from './Sign/Sign'
 
-
 export default {
-    title:"Form Demo"
+    title: 'components/Form Demo',
 }
 
-
-export const SignFormDemo = () =>{
-    return <SignFrom/>
+export const SignFormDemo = () => {
+    return <SignFrom />
 }
