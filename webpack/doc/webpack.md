@@ -5,6 +5,9 @@ webpack developement and production config, and any about webpack issues
   - [Entry](#entry)
   - [Output](#output)
   - [Module](#module)
+- [Development Config](#development-config)
+- [Production Config](#production-config)
+- [Issues](#issues)
   
 ## Common Config 
 
@@ -77,3 +80,41 @@ resolve: {
     extensions: ['.js', '.jsx'],
 },
 ```
+
+
+## Development Config
+
+**devtool**
+> https://webpack.docschina.org/configuration/devtool/
+
+**devServer**
+- contentBase : folder of devServer root path
+- hot : hot reload
+- historyApiFallback : setting about spa router , [relation issue](https://stackoverflow.com/questions/51566221/page-doesnt-load-on-refresh-react-router-dom)
+
+```js
+devServer: {
+    contentBase: path.join(__dirname, '../dist'),
+    compress: true,
+    hot: true,
+    port: 3000,
+    historyApiFallback: true,
+},
+```
+
+## Production Config
+
+**plugins**
+
+| Plugin                         | use                   |
+| ------------------------------ | --------------------- |
+| CleanWebpackPlugin             | clear old dist folder |
+| OptimizeCssAssetsWebpackPlugin | minify                  |
+| TerserPlugin                   | minify Js             |
+
+
+## Issues
+
+- [Should I use sourcemap in production](https://css-tricks.com/should-i-use-source-maps-in-production/) 
+- [How to output images/fonts in a separate subfolders](https://stackoverflow.com/questions/33058964/configure-webpack-to-output-images-fonts-in-a-separate-subfolders)  
+- [Page doesn't load on refresh - react-router-dom](https://stackoverflow.com/questions/51566221/page-doesnt-load-on-refresh-react-router-dom)

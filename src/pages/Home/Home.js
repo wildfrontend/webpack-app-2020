@@ -1,5 +1,7 @@
 import React from 'react'
 import * as S from './Home.emtion'
+import './Home.scss'
+
 const Home = () => {
     return (
         <div>
