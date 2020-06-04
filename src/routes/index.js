@@ -6,6 +6,9 @@ import About from 'pages/About'
 
 import RoutesTopics from './topics'
 import NotFound404 from 'pages/ErrorPage/404'
+import AuthRoute from './auth/AuthRoute'
+import Dashboard from 'pages/Dashboard'
+import RoutesAuth from './auth'
 
 const Routes = () => {
     return (
@@ -19,6 +22,12 @@ const Routes = () => {
             <Route path="/topics">
                 <RoutesTopics />
             </Route>
+            <Route path="/auth">
+                <RoutesAuth />
+            </Route>
+            <AuthRoute path="/dashboard">
+                <Dashboard />
+            </AuthRoute>
             <Route path="*">
                 <NotFound404 />
             </Route>

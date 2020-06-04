@@ -9,7 +9,7 @@ import App from './App'
 
 const Root = () => {
     return (
-        <StoreContext.Provider value={store}>
+        <StoreContext.Provider value={store()}>
             <Router>
                 <App />
             </Router>

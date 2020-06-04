@@ -15,7 +15,7 @@ const Topics = () => {
             <ul>
                 {topics.map((topic, i) => {
                     return (
-                        <li>
+                        <li key={i}>
                             <Link to={`${url}/${topic.id}`}>{topic.name}</Link>
                         </li>
                     )

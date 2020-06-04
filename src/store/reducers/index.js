@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import player from './player'
+import auth from './auth'
 
 const rootReducer = combineReducers({
-    player,
+    auth,
 })
 
 export default rootReducer

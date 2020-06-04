@@ -5,7 +5,8 @@
             "components/*": ["./src/components/*"],
             "routes/*": ["./src/routes/*"],
             "pages/*": ["./src/pages/*"],
-            "assets/*": ["./src/assets"]
+            "assets/*": ["./src/assets/*"],
+            "reducers/*": ["./src/store/reducers/*"]
         }
     },
     "exclude": ["node_modules"]

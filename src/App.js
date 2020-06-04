@@ -16,6 +16,9 @@ const App = () => {
                 <li>
                     <Link to="/topics">Topics</Link>
                 </li>
+                <li>
+                    <Link to="/dashboard">Dashboard</Link>
+                </li>
             </ul>
             <Routes />
         </div>
