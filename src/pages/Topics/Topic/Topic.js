@@ -11,15 +11,17 @@ const topics = [
 const Topic = () => {
     const { url } = useRouteMatch()
     const { id } = useParams()
-    if (topics.some((topic) => topic.id === id)) {
+
+    if (topics.some((topic) => topic.id == id)) {
         return (
             <div>
                 Topic:{id}
                 <pre>url:{url}</pre>
             </div>
         )
+    } else {
+        return <NotFound404 />
     }
-    return <NotFound404 />
 }
 
 export default Topic
