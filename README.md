@@ -1,16 +1,15 @@
-# React Project Pattern 
-- [React Project Pattern](#react-project-pattern)
-  - [Config Files](#config-files)
-    - [.babelrc](#babelrc)
-    - [.prettierrc](#prettierrc)
-    - [.gitignore](#gitignore)
-    - [jsconfig.json](#jsconfigjson)
-    - [package.json](#packagejson)
-  - [React Pattern](#react-pattern)
-  - [Git Commit Pattern](#git-commit-pattern)
-    - [Before Commit](#before-commit)
-    - [Commit Formmat](#commit-formmat)
-  - [Format](#format)
+# React Project Pattern <!-- omit in toc -->
+- [Config Files](#config-files)
+  - [.babelrc](#babelrc)
+  - [.prettierrc](#prettierrc)
+  - [.gitignore](#gitignore)
+  - [jsconfig.json](#jsconfigjson)
+  - [package.json](#packagejson)
+- [React Pattern](#react-pattern)
+- [Git Commit Pattern](#git-commit-pattern)
+  - [Before Commit](#before-commit)
+  - [Commit Formmat](#commit-formmat)
+- [Format](#format)
   
 ## Config Files
 
@@ -29,14 +28,14 @@
 [
     "module-resolver",
     {
-        "root": ["."],
         "alias": {
-            "routes": "./src/routes",
-            "pages": "./src/pages",
-            "components": "./src/components",
             "assets": "./src/assets",
-            "reducers": "./src/store/reducers"
-        }
+            "components": "./src/components",
+            "pages": "./src/pages",
+            "reducers": "./src/store/reducers",
+            "routes": "./src/routes"
+        },
+        "root": ["."]
     }
 ]
 ```
