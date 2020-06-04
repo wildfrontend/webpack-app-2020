@@ -1,48 +1,66 @@
-# webpack.config
-
-- [webpack.config](#webpackconfig)
-  - [loader](#loader)
-  - [devServer](#devserver)
-  - [bundle](#bundle)
-  - [Issues](#issues)
-
-## loader 
-
-- babel-loader
-- style-loader
-- sass-loader
-- css-loader
- - [file-loader](https://webpack.js.org/loaders/file-loader/)
-## devServer
-- [devServer](https://webpack.js.org/configuration/dev-server/)
-- [babel-loader](https://babeljs.io/docs/en/babel-preset-react)
-- [hot-reload](https://medium.com/frochu/react-%E6%95%B4%E5%90%88-hot-module-replacement-cc4721a432af)
-  - [react-hot-loader](https://github.com/gaearon/react-hot-loader)
+# Webapck 
 
 
+## Common Config
 
-## bundle 
-- [terser-webpack-plugin](https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions)
-- 
-## Issues
+**Entry**
+| entry  | class        |
+| ------ | ------------ |
+| app    | project      |
+| hmr    | hmr          |
+| vendor | core lib     |
+| style  | css like lib |
 
-1. `react-router-dom` refresh page not GET route
-
-[solved](https://stackoverflow.com/questions/51566221/page-doesnt-load-on-refresh-react-router-dom) : 
-
-webpack.config.js
-
-````js
-devServer:{
-  ...
-    historyApiFallback: {
-    index: 'index.html' // assuming this is your entry point file that loads your bundle.
+```js
+  entry: {
+      app: path.resolve(__dirname, '../src/index.js'),
+      hmr: 'react-hot-loader/patch',
+      vendor: ['react', 'react-router-dom', '@hot-loader/react-dom'],
+      style: ['@emotion/styled', '@emotion/core'],
   }
-}
-````
+```
+**Output**
+All bundle files will ouput to `dist` folder.
 
-2. file-loader splite font and file 
-> https://stackoverflow.com/questions/33058964/configure-webpack-to-output-images-fonts-in-a-separate-subfolders
+**[output.publicPath](https://webpack.js.org/configuration/output/#outputpublicpath)** : 
+if have <base> tag in html , it can remove
 
-3. should i use source-maps in production
->https://css-tricks.com/should-i-use-source-maps-in-production/
+```js    
+  output: {
+      path: path.resolve(__dirname, '../dist'),
+      filename: ENV_PROD
+          ? 'js/[name].[chunkhash:8].js'
+          : 'js/[name].[hash:8].js',
+  }
+```
+**Module**
+
+**loader**
+
+| loader                                                | use                     |
+| ----------------------------------------------------- | ----------------------- |
+| react-hot-loader/webpack                              | hmr                     |
+| babel-loader                                          | bundle js               |
+| css-loader , sass-loader, MiniCssExtractPlugin.loader | bundle css              |
+| file-loader                                           | output iamges and fonts |
+| html-loader                                           | build spa index.html    |
+
+**plugins**
+
+| plugin               | use              |
+| -------------------- | ---------------- |
+| MiniCssExtractPlugin | hash css file    |
+| HtmlWebpackPlugin    | setting spa html |
+
+**[reslove](https://webpack.docschina.org/configuration/resolve/)**
+
+replace `react-dom` to `@hot-loader/react-dom`
+
+```js
+resolve: {
+    alias: {
+        'react-dom': '@hot-loader/react-dom',
+    },
+    extensions: ['.js', '.jsx'],
+},
+```

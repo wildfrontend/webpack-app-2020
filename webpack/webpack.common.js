@@ -13,7 +13,6 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
-        publicPath: '',
         filename: ENV_PROD
             ? 'js/[name].[chunkhash:8].js'
             : 'js/[name].[hash:8].js',
