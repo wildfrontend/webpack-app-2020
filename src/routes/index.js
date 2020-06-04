@@ -19,6 +19,9 @@ const Routes = () => {
             <Route path="/topics">
                 <RoutesTopics />
             </Route>
+            <Route path="*">
+                <NotFound404 />
+            </Route>
         </Switch>
     )
 }
