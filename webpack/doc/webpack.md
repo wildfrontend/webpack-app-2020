@@ -3,6 +3,7 @@
 - [webpack.config](#webpackconfig)
   - [loader](#loader)
   - [devServer](#devserver)
+  - [bundle](#bundle)
   - [Issues](#issues)
 
 ## loader 
@@ -20,6 +21,9 @@
 
 
 
+## bundle 
+- [terser-webpack-plugin](https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions)
+- 
 ## Issues
 
 1. `react-router-dom` refresh page not GET route
@@ -38,4 +42,7 @@ devServer:{
 ````
 
 2. file-loader splite font and file 
-   > https://stackoverflow.com/questions/33058964/configure-webpack-to-output-images-fonts-in-a-separate-subfolders
+> https://stackoverflow.com/questions/33058964/configure-webpack-to-output-images-fonts-in-a-separate-subfolders
+
+3. should i use source-maps in production
+>https://css-tricks.com/should-i-use-source-maps-in-production/

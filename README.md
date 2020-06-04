@@ -9,6 +9,7 @@
       - [script](#script)
       - [dependency](#dependency)
   - [React Pattern](#react-pattern)
+  - [Clean Test code](#clean-test-code)
   - [Git Commit Format](#git-commit-format)
 
 ## Config Files
@@ -125,6 +126,10 @@ devtool：
 
 ## React Pattern
 > refer : https://reactpatterns.com/
+
+## Clean Test code
+
+- remove console.log()
 
 ## Git Commit Format
 > refer : https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.em2hiij8p46d
