@@ -1,4 +1,4 @@
-# React Project Pattern
+# React Project Pattern 
 - [React Project Pattern](#react-project-pattern)
   - [Config Files](#config-files)
     - [.babelrc](#babelrc)
@@ -6,93 +6,119 @@
     - [.gitignore](#gitignore)
     - [jsconfig.json](#jsconfigjson)
     - [package.json](#packagejson)
-      - [script](#script)
-      - [dependency](#dependency)
   - [React Pattern](#react-pattern)
-  - [Clean Test code](#clean-test-code)
-  - [Git Commit Format](#git-commit-format)
-
+  - [Git Commit Pattern](#git-commit-pattern)
+    - [Before Commit](#before-commit)
+    - [Commit Formmat](#commit-formmat)
+  - [Format](#format)
+  
 ## Config Files
 
 ### .babelrc
-basic react env 
-  
+
+**Basic react env** :
+
+| presets               | use |
+| --------------------- | --- |
+| "@babel/preset-env"   | env |
+| "@babel/preset-react" | env |
+
+**Relative path** :
+
 ```json
-{
-    "presets": [
-      "@babel/preset-env", "@babel/preset-react"
-    ]
-}
+[
+    "module-resolver",
+    {
+        "root": ["."],
+        "alias": {
+            "routes": "./src/routes",
+            "pages": "./src/pages",
+            "components": "./src/components",
+            "assets": "./src/assets",
+            "reducers": "./src/store/reducers"
+        }
+    }
+]
 ```
-relative path 
-```json
-{
-  "plugins":
-   [
-      [
-          "module-resolver",
-          {
-              "root": ["."],
-              "alias": {
-                  "routes": "./src/routes",
-                  "pages": "./src/pages",
-                  "components": "./src/components",
-                  "assets":"./src/assets"
-              }
-          }
-      ]
-    ]
-}
-```
+
+
+
 ### .prettierrc
-> basic setting by [Prettier](https://prettier.io/docs/en/configuration.html#basic-configuration) 
+
+Basic setting by [Prettier](https://prettier.io/docs/en/configuration.html#basic-configuration) 
 
 ### .gitignore
-> basic seeting by [.gitignore Generator](https://marketplace.visualstudio.com/items?itemName=piotrpalarz.vscode-gitignore-generator)
 
-- remove ignore about Nuxt.js
+Basic setting by [create-react-app](https://github.com/facebook/create-react-app)
 
 ### jsconfig.json
-> more jsconfig tutorial refer [this](https://zhuanlan.zhihu.com/p/55644953)
 
-- relative path 
+More jsconfig tutorial refer [this](https://zhuanlan.zhihu.com/p/55644953)
+
+| config          | use             |
+| --------------- | --------------- |
+| compilerOptions | reslove path    |
+| exclude         | exclude folders |
+
+**reslove path**：
 ````json
 {
-  "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-          "components/*": ["./src/components/*"],
-          "routes/*": ["./src/routes/*"],
-          "pages/*": ["./src/pages/*"],
-          "assets/*": ["./src/assets"]
-      }
-  },
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "assets/*": ["./src/assets/*"],
+            "components/*": ["./src/components/*"],
+            "pages/*": ["./src/pages/*"],
+            "reducers/*": ["./src/store/reducers/*"],
+            "routes/*": ["./src/routes/*"]
+        }
+    }
 }
 ````
-
-- exclude files
-```json
+**exclude folders**：
+````json
 {
   "exclude": ["node_modules"]
 }
-```
-### package.json
-
-#### script 
-  - `yarn prettier` : format all js files in Project
-  - `yarn start` : start dev server
-  - `yarn build` : bundle static file
-#### dependency
-  
-main packages：
-````json
-  // indeed react-dom
-  "@hot-loader/react-dom": "^16.13.0", 
-  "react": "^16.13.1",
-  "react-hot-loader": "^4.12.21"
 ````
 
-babel：
+### package.json
+
+**script**
+| command          | use                            |
+| ---------------- | ------------------------------ |
+| `yarn start`     | start dev server               |
+| `yarn build`     | bundle static file             |
+| `yarn prettier`  | format all js files in Project |
+| `yarn storybook` | open storybook                 |
+
+**dependency**
+
+**main packages**：
+
+| package               | use                        |
+| --------------------- | -------------------------- |
+| @emotion/styled       | css-in-js                  |
+| @hot-loader/react-dom | react hmr relace react-dom |
+| react                 | react core                 |
+| react-hook-form       | form lib                   |
+| react-hot-loader      | react hmr                  |
+| react-router-dom      | router config              |
+| redux                 | data flow                  |
+| redux-react-hook      | redux hook middleware      |
+
+````json
+  "@emotion/styled": "^10.0.27",
+  "@hot-loader/react-dom": "^16.13.0",
+  "react": "^16.13.1",
+  "react-hook-form": "^5.7.2",
+  "react-hot-loader": "^4.12.21",
+  "react-router-dom": "^5.2.0",
+  "redux": "^4.0.5",
+  "redux-react-hook": "^4.0.1"
+````
+
+**babel：**
 ````json
   // core
   "@babel/core": "^7.10.2",
@@ -101,62 +127,72 @@ babel：
    // relative path complier
   "babel-plugin-module-resolver": "^4.0.0",
 ````
-loader： 
+**webpack：**
 ````json
   "babel-loader": "^8.1.0",
-  // replace style-loader
-  "mini-css-extract-plugin": "^0.9.0",
+  "clean-webpack-plugin": "^3.0.0",
   "css-loader": "^3.5.3",
-  "node-sass": "^4.14.1",
-  "sass-loader": "^8.0.2",
-  // font / image
   "file-loader": "^6.0.0",
-  // html
   "html-loader": "^1.1.0",
-  // reac-hot-loader
-  "react-hot-loader/webpack": "^4.12.21",
-````
-devtool：
-````json
+  "html-webpack-plugin": "^4.3.0",
+  "mini-css-extract-plugin": "^0.9.0",
+  "node-sass": "^4.14.1",
+  "optimize-css-assets-webpack-plugin": "^5.0.3",
+  "redux-devtools-extension": "^2.13.8",
+  "sass-loader": "^8.0.2",
+  "terser-webpack-plugin": "^3.0.3",
   "webpack": "^4.43.0",
   "webpack-cli": "^3.3.11",
   "webpack-dev-server": "^3.11.0",
   "webpack-merge": "^4.2.2"
 ````
 
+**storybook:**
+```json
+  "@storybook/addon-actions": "^5.3.19",
+  "@storybook/addon-console": "^1.2.1",
+  "@storybook/addon-knobs": "^5.3.19",
+  "@storybook/addon-notes": "^5.3.19",
+  "@storybook/addon-viewport": "^5.3.19",
+  "@storybook/addons": "^5.3.19",
+  "@storybook/react": "^5.3.19",
+```
 ## React Pattern
 > refer : https://reactpatterns.com/
 
-## Clean Test code
-
-- remove console.log()
-
-## Git Commit Format
+## Git Commit Pattern
 > refer : https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.em2hiij8p46d
 
-commit : 
+### Before Commit 
+
+- #### Clean Test code
+  - remove `console.log()`
+
+### Commit Formmat
+
 format : 
+
 ```sh
 <type> (scope): title
 - do something
 - do another 
 ````
 
-Allowed type : * required
+Allowed type : `* required`
 
-| type     | comment                             |     |
-| -------- | ----------------------------------- | --- |
-| feat     | feature                             |     |
-| fix      | bug fix                             |     |
-| docs     | document                            |     |
-| style    | formatting, missing semi colons,... |     |
-| refactor | refactor                            |     |
-| test     | when adding missing tests           |     |
-| chore    | maintain                            |     |
+| type     | comment                             |
+| -------- | ----------------------------------- |
+| feat     | feature                             |
+| fix      | bug fix                             |
+| docs     | document                            |
+| style    | formatting, missing semi colons,... |
+| refactor | refactor                            |
+| test     | when adding missing tests           |
+| chore    | maintain                            |
 
 
 
-Allowed scope : not requried
+Allowed scope : `not requried`
 
 ```
 Scope can be anything specifying place of the commit change. 
@@ -166,9 +202,7 @@ Scope can be anything specifying place of the commit change.
 | ----- | ---------------------------------- |
 | Home  | about Home router,pages,components |
 
-
-
-Allowed title : * required
+Allowed title : `* required`
 
 ```md
 This is a very short description of the change.
@@ -176,3 +210,15 @@ This is a very short description of the change.
 - don't capitalize first letter
 - no dot (.) at the end
 ```
+## Format
+Sort `package.json` by key
+
+```sh
+npx sort-package-json
+```
+
+Other Json file
+
+1. go to [JSON Sorter](https://r37r0m0d3l.github.io/json_sort/)
+2. copy file and replace prettier file
+  
