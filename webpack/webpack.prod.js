@@ -13,7 +13,6 @@ module.exports = merge(common, {
             new TerserPlugin({
                 extractComments: true,
                 parallel: true,
-                sourceMap: true, // Must be set to true if using source-maps in production
                 terserOptions: {
                     extractComments: 'all',
                     compress: {

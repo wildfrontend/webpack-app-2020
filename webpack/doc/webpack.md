@@ -109,10 +109,28 @@ devServer: {
 | Plugin                         | use                   |
 | ------------------------------ | --------------------- |
 | CleanWebpackPlugin             | clear old dist folder |
-| OptimizeCssAssetsWebpackPlugin | minify                  |
+| OptimizeCssAssetsWebpackPlugin | minify                |
 | TerserPlugin                   | minify Js             |
 
+[TerserPlugn](https://webpack.docschina.org/plugins/terser-webpack-plugin/):
 
+
+```js
+
+new TerserPlugin({
+    extractComments: true,
+    parallel: true,
+    sourceMap: true, // Must be set to true if using source-maps in production
+    terserOptions: {
+        extractComments: 'all',
+        compress: {
+            drop_console: true,
+        },
+    },
+    test: /\.js(\?.*)?$/i, 
+}),
+
+```
 ## Issues
 
 - [Should I use sourcemap in production](https://css-tricks.com/should-i-use-source-maps-in-production/) 
