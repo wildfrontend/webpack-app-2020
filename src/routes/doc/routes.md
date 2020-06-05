@@ -39,3 +39,8 @@ solved: add `<base>` tag
 </html>
 
 ```
+
+## Code Spliting
+
+https://zh-hant.reactjs.org/docs/code-splitting.html
+
