@@ -5,12 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ENV_PROD = process.env.NODE_ENV === 'production'
 const ENV_DEV = process.env.NODE_ENV === 'development'
 module.exports = {
-    entry: {
-        app: path.resolve(__dirname, '../src/index.js'),
-        hmr: 'react-hot-loader/patch',
-        vendor: ['react', 'react-router-dom', '@hot-loader/react-dom'],
-        style: ['@emotion/styled', '@emotion/core'],
-    },
+    entry: './src/index.tsx',
+    target: 'web',
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: ENV_PROD
@@ -20,12 +16,16 @@ module.exports = {
     module: {
         rules: [
             {
-                loader: 'react-hot-loader/webpack',
+                test: /\.(ts|tsx)?$/,
+                use: {
+                    loader: 'awesome-typescript-loader',
+                },
+                exclude: /node_modules/,
             },
             {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: ['babel-loader'],
+                enforce: 'pre',
+                test: /\.js$/,
+                loader: 'source-map-loader',
             },
             {
                 test: /\.(scss|css)$/i,
@@ -101,9 +101,6 @@ module.exports = {
         }),
     ],
     resolve: {
-        alias: {
-            'react-dom': '@hot-loader/react-dom',
-        },
-        extensions: ['.js', '.jsx'],
+        extensions: ['.tsx', '.ts', '.js'],
     },
 }
